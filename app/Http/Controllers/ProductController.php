@@ -6,6 +6,7 @@ use App\Models\Model\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\Product\ProductResource;
+use App\Http\Resources\Product\ProductCollection;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,11 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return Product::all();
+        // displays the produt information according to the ProductResource model
+        // return ProductResource::collection(Product::all());
+        // return new ProductCollection(Product::all()); -- this will only load a single product
+        // adding the ::collection statement will allow it to generate multiple products
+        return ProductCollection::collection(Product::all());
     }
 
     /**
