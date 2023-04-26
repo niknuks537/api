@@ -20,7 +20,8 @@ class ProductController extends Controller
         // return ProductResource::collection(Product::all());
         // return new ProductCollection(Product::all()); -- this will only load a single product
         // adding the ::collection statement will allow it to generate multiple products
-        return ProductCollection::collection(Product::all());
+        // return ProductCollection::collection(Product::all());
+        return ProductCollection::collection(Product::paginate(10));
     }
 
     /**
