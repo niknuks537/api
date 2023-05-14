@@ -17,9 +17,13 @@ use App\Http\Controllers\ReviewController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// }); sanctum is lightweight, use passport
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 
 // Commented out the line that was suggested in the tutorial
 // Route::apiResource('/products', 'ProductController');
